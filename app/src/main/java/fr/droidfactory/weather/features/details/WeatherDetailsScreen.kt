@@ -2,6 +2,7 @@ package fr.droidfactory.weather.features.details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Switch
@@ -13,13 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WeatherDetailsScreen() {
+fun WeatherDetailsScreen(cityName: String, navigateUp: () -> Unit) {
      //Get the data
-    val city = "Lyon"
     val temperature = 15.8
 
     //Use the data
-    WeatherDetails(city = city, temperature = temperature)
+    WeatherDetails(city = cityName, temperature = temperature)
 }
 
 @Composable
@@ -37,7 +37,7 @@ private fun WeatherDetails(
     }
 
     Column (
-        modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.padding(16.dp).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Row(modifier = Modifier.align(Alignment.End), verticalAlignment = Alignment.CenterVertically) {
