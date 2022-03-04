@@ -14,10 +14,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.droidfactory.weather.data.database.entities.CityDetailsResultEntity
 
 @Composable
-fun ItemCity(city: String, onCityClicked: () -> Unit) {
- val color = getRandomColor()
+fun ItemCity(city: CityDetailsResultEntity, onCityClicked: () -> Unit) {
+    val color = city.colorEntity.color
+    val city = city.cityEntity
 
     Row(
         modifier = Modifier
@@ -26,12 +28,12 @@ fun ItemCity(city: String, onCityClicked: () -> Unit) {
             .clickable { onCityClicked() },
         verticalAlignment = Alignment.CenterVertically
     ) {
-        CircleLetter(city = city, color = color)
+        CircleLetter(city = city.name, color = color)
 
         Spacer(modifier = Modifier.padding(horizontal = 4.dp))
 
         Text(
-            text = city,
+            text = city.name,
             style = MaterialTheme.typography.h4,
             color = MaterialTheme.colors.onPrimary,
             fontSize = 48.sp,
@@ -58,10 +60,3 @@ private fun CircleLetter(city: String, color: Color) {
         )
     }
 }
-
-private fun getRandomColor() = Color(
-    red = (0..255).random(),
-    green = (0..255).random(),
-    blue = (0..255).random(),
-
-    )

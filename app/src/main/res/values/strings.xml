@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Weather</string>
+    <string name="app_name" translatable="false">Weather</string>
+
+    <string name="dialog_title_add_city">Add a new city</string>
+    <string name="dialog_edittext_hint_add_city">Type the name of a city here</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_confirm_add_city">Add</string>
+
+    <string name="fab_add_city">Add a new city</string>
+
 </resources>

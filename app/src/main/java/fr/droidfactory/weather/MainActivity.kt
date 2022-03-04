@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import fr.droidfactory.weather.features.details.WeatherDetailsScreen
 import fr.droidfactory.weather.ui.theme.WeatherTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +16,10 @@ class MainActivity : ComponentActivity() {
             WeatherTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    MainNavigation()
+
+                    val cityRepository = (application as WeatherApplication).cityRepository
+                    val colorRepository = (application as WeatherApplication).colorRepository
+                    MainNavigation(cityRepository, colorRepository)
                 }
             }
         }

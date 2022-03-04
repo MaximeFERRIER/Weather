@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_title_add_city">Ajouter une nouvelle ville</string>
+    <string name="dialog_edittext_hint_add_city">Entrez le nom d\'une ville ici</string>
+    <string name="dialog_cancel">Annuler</string>
+    <string name="dialog_confirm_add_city">Ajouter</string>
+
+    <string name="fab_add_city">Ajouter une nouvelle ville</string>
+</resources>
