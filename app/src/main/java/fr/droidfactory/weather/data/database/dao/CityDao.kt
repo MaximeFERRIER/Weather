@@ -16,4 +16,7 @@ abstract class CityDao {
 
     @Query("SELECT * FROM CITY_ENTITY")
     abstract fun  observeCities(): Flow<List<CityDetailsResultEntity>>
+
+    @Query("SELECT * FROM CITY_ENTITY WHERE NAME = :cityName")
+    abstract fun  observeCityByName(cityName: String): Flow<CityDetailsResultEntity>
 }

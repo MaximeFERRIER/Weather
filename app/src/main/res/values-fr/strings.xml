@@ -6,4 +6,16 @@
     <string name="dialog_confirm_add_city">Ajouter</string>
 
     <string name="fab_add_city">Ajouter une nouvelle ville</string>
+
+    <string name="navigation_back">Retourner sur l\'écran précédent</string>
+    <string name="temperature_felt">Ressenti</string>
+    <string name="humidity">Humidité</string>
+
+    <string name="error_no_internet">Pas de connexion internet</string>
+    <string name="error_no_city_found">Cette ville n\'a pas été trouvée</string>
+    <string name="error_forbidden">Mauvaise clef d\'API ou quota atteint</string>
+    <string name="error_unauthorized">Absence de clef d\'API</string>
+    <string name="error_server">Erreur du serveur</string>
+    <string name="error_timeout">Délais trop long</string>
+    <string name="error_unknown">erreur inconnu</string>
 </resources>

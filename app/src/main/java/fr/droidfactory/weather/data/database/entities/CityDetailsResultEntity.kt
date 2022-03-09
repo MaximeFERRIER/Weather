@@ -10,5 +10,10 @@ data class CityDetailsResultEntity(
         parentColumn = "COLOR_ID",
         entityColumn = "_id"
     )
-    val colorEntity: ColorEntity
+    val colorEntity: ColorEntity,
+    @Relation(
+        parentColumn = "NAME",
+        entityColumn = "CITY_NAME"
+    )
+    val cityInfoEntity: CityInfoEntity?
 )

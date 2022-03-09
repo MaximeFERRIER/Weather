@@ -8,4 +8,17 @@
 
     <string name="fab_add_city">Add a new city</string>
 
+    <string name="navigation_back">Navigate to the previous screen</string>
+    <string name="temperature_felt">Felt</string>
+    <string name="humidity">Humidity</string>
+    <string name="uv" translatable="false">uv</string>
+
+    <string name="error_no_internet">No internet connection</string>
+    <string name="error_no_city_found">City not found</string>
+    <string name="error_forbidden">Wrong api key or quota reached</string>
+    <string name="error_unauthorized">No api key</string>
+    <string name="error_server">Error server</string>
+    <string name="error_timeout">Timeout</string>
+    <string name="error_unknown">Unknown error</string>
+
 </resources>

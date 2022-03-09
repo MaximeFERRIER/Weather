@@ -16,7 +16,11 @@ import fr.droidfactory.weather.features.cities.CitiesViewModelFactory
 import fr.droidfactory.weather.features.cities.domain.AddCityInteractorImpl
 import fr.droidfactory.weather.features.cities.domain.ObserveCitiesInteractorImpl
 import fr.droidfactory.weather.features.cities.ui.CitiesScreen
-import fr.droidfactory.weather.features.details.WeatherDetailsScreen
+import fr.droidfactory.weather.features.details.WeatherDetailsViewModel
+import fr.droidfactory.weather.features.details.WeatherDetailsViewModelFactory
+import fr.droidfactory.weather.features.details.domains.GetCityWeatherInteractorImpl
+import fr.droidfactory.weather.features.details.domains.ObserveCityByNameInteractorImpl
+import fr.droidfactory.weather.features.details.ui.WeatherDetailsScreen
 
 @Composable
 fun MainNavigation(cityRepository: CityRepository, colorRepository: ColorRepository) {
@@ -33,7 +37,7 @@ fun MainNavigation(cityRepository: CityRepository, colorRepository: ColorReposit
             )
 
             CitiesScreen(viewModel = vm) { city ->
-                navController.navigate("${NavScreen.Details.route}/$city ")
+                navController.navigate("${NavScreen.Details.route}/$city")
             }
         }
 
@@ -44,7 +48,15 @@ fun MainNavigation(cityRepository: CityRepository, colorRepository: ColorReposit
             })
         ) { navBackstackEntry ->
             val cityName = navBackstackEntry.arguments?.getString(NavScreen.Details.cityName) ?: return@composable
-            WeatherDetailsScreen(cityName) {
+
+            val vm = viewModel<WeatherDetailsViewModel>(
+                factory = WeatherDetailsViewModelFactory(
+                    city = cityName,
+                    getCityWeatherInteractor = GetCityWeatherInteractorImpl(cityRepository),
+                    observeCityByNameInteractor = ObserveCityByNameInteractorImpl(cityRepository)
+                )
+            )
+            WeatherDetailsScreen(vm) {
                 navController.navigateUp()
             }
         }

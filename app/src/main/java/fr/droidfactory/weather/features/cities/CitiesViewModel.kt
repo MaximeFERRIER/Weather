@@ -16,7 +16,7 @@ import java.lang.IllegalArgumentException
 class CitiesViewModel(observeCitiesInteractor: ObserveCitiesInteractor, private val addCityInteractor: AddCityInteractor): ViewModel() {
 
     private val _citiesState = MutableStateFlow(CitiesScreenState())
-    val citiesState: StateFlow<CitiesScreenState> = _citiesState
+    internal val citiesState: StateFlow<CitiesScreenState> = _citiesState
 
     init {
         viewModelScope.launch {
@@ -33,7 +33,7 @@ class CitiesViewModel(observeCitiesInteractor: ObserveCitiesInteractor, private 
     }
 }
 
-data class CitiesScreenState(val cities: List<CityDetailsResultEntity> = emptyList())
+internal data class CitiesScreenState(val cities: List<CityDetailsResultEntity> = emptyList())
 
 @Suppress("UNCHECKED_CAST")
 class CitiesViewModelFactory (

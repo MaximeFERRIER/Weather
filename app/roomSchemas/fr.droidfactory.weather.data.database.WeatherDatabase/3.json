@@ -1,0 +1,174 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "261efd84b157ab3b1463c8eb902714c6",
+    "entities": [
+      {
+        "tableName": "CITY_ENTITY",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`NAME` TEXT NOT NULL, `COLOR_ID` INTEGER NOT NULL, PRIMARY KEY(`NAME`), FOREIGN KEY(`COLOR_ID`) REFERENCES `COLOR_ENTITY`(`_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "NAME",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorId",
+            "columnName": "COLOR_ID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "NAME"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_CITY_ENTITY_COLOR_ID",
+            "unique": false,
+            "columnNames": [
+              "COLOR_ID"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_CITY_ENTITY_COLOR_ID` ON `${TABLE_NAME}` (`COLOR_ID`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "COLOR_ENTITY",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "COLOR_ID"
+            ],
+            "referencedColumns": [
+              "_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "COLOR_ENTITY",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `RED` INTEGER NOT NULL, `GREEN` INTEGER NOT NULL, `BLUE` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "red",
+            "columnName": "RED",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "green",
+            "columnName": "GREEN",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "blue",
+            "columnName": "BLUE",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "CITY_INFO_ENTITY",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`CITY_NAME` TEXT NOT NULL, `UPDATE_DATE` TEXT NOT NULL, `TEMPERATURE` REAL NOT NULL, `CONDITION_ICON` TEXT NOT NULL, `CONDITION_TEXT` TEXT NOT NULL, `HUMIDITY` INTEGER NOT NULL, `TEMPERATURE_FEEL_LIKE` REAL NOT NULL, `UV` REAL NOT NULL, PRIMARY KEY(`CITY_NAME`), FOREIGN KEY(`CITY_NAME`) REFERENCES `CITY_ENTITY`(`NAME`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "cityName",
+            "columnName": "CITY_NAME",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDate",
+            "columnName": "UPDATE_DATE",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "temperature",
+            "columnName": "TEMPERATURE",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "conditionIcon",
+            "columnName": "CONDITION_ICON",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "conditionText",
+            "columnName": "CONDITION_TEXT",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "humidity",
+            "columnName": "HUMIDITY",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "temperatureFeelLike",
+            "columnName": "TEMPERATURE_FEEL_LIKE",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uv",
+            "columnName": "UV",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "CITY_NAME"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CITY_ENTITY",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "CITY_NAME"
+            ],
+            "referencedColumns": [
+              "NAME"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '261efd84b157ab3b1463c8eb902714c6')"
+    ]
+  }
+}

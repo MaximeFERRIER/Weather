@@ -1,0 +1,5 @@
+package fr.droidfactory.weather.features.details
+
+sealed interface WeatherDetailsAction
+object NavigateUp: WeatherDetailsAction
+object ToggleCelsius: WeatherDetailsAction
